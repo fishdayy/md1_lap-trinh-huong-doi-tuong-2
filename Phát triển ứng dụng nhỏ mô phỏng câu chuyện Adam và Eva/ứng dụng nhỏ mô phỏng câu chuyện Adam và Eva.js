@@ -1,0 +1,4 @@
+class Apple{
+    constructor(mass) {
+    }
+}
