@@ -17,43 +17,59 @@ class Ninja{
     showNinja(){
         let ninja = document.getElementById('gameCanvas')
         let ctx = ninja.getContext("2d");
+        ctx.clearRect(0,0, 500, 500)
         let imgNinja = document.getElementById("ninja");
-        ctx.drawImage(imgNinja,10,10)
+        ctx.drawImage(imgNinja,this.x,this.y)
     }
 
-    moveToLeft(){
-        this.x -= this.speedX
-        this.showNinja()
-    }
-    moveToTop(){
-        this.y +=this.speedY
-        this.showNinja()
-    }
-    moveToRight(){
+    move(){
         this.x += this.speedX
-        this.showNinja()
-    }
-    moveToBot() {
-        this.y -= this.speedY
+        this.y += this.speedY
         this.showNinja()
     }
 }
-let ninja = new Ninja(700,300,80,60)
-ninja.showNinja()
+
+class Dinosaur{
+    x;
+    y;
+    width;
+    height;
+    speedX;
+    speedY;
+    constructor(x,y,width,height){
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.speedX = 10;
+        this.speedY = 10;
+    }
+
+}
+
+let ninja = new Ninja(0,0,80,60)
 ninja.showNinja()
 window.addEventListener('keydown',(e) =>{
-   switch (e.keyCode){
-       case 37:
-           ninja.moveToLeft();
-           break;
-       case 39:
-           ninja.moveToRight()
-           break;
-       case 38 :
-           ninja.moveToBot()
-           break
-       case 40 :
-           ninja.moveToTop()
-           break
-   }
+    if (e.keyCode == 40) {
+        ninja.speedX = 0;
+        ninja.speedY = 10;
+
+        ninja.move()
+    }
+    if (e.keyCode == 37) {
+        ninja.speedX = -10;
+        ninja.speedY = 0;
+        ninja.move()
+    }
+    if (e.keyCode == 38) {
+        ninja.speedX = 0;
+        ninja.speedY = -10;
+        ninja.move()
+    }
+    if (e.keyCode == 39) {
+        ninja.speedX = 10;
+        ninja.speedY = 0;
+        ninja.move()
+    }
 })
+requestAnimationFrame(ninja.move)
