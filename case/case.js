@@ -1,5 +1,5 @@
-class Ninja{
-    constructor(x,y) {
+class Ninja {
+    constructor(x, y) {
         this.x = x;
         this.y = y;
         this.width = 59;
@@ -20,46 +20,57 @@ class Ninja{
     }
 
     moveDown() {
-        this.y += this.speedY;
-        this.srcImg = (this.srcImg === 'down2.png') ? 'down1.png' : 'down2.png'
-        this.showNinja();
+        if (this.y < 275) {
+            this.y += this.speedY;
+            this.srcImg = (this.srcImg === 'down2.png') ? 'down1.png' : 'down2.png'
+            this.showNinja();
+        }
     }
 
     moveUp() {
+        if (this.y > 120){
         this.y -= this.speedY;
         this.srcImg = (this.srcImg === 'up2.png') ? 'up1.png' : 'up2.png'
         this.showNinja();
+        }
     }
 
     moveLeft() {
+        if (this.x > 0 ){
         this.x -= this.speedX;
         this.srcImg = (this.srcImg === 'left2.png') ? 'left1.png' : 'left2.png'
         this.showNinja();
+        }
     }
 
     moveRight() {
+        if (this.x < 630)
         this.x += this.speedX;
         this.srcImg = (this.srcImg === 'right2.png') ? 'right1.png' : 'right2.png'
         this.showNinja();
     }
 }
-let ninja = new Ninja(325,180)
+
+let ninja = new Ninja(325, 180)
 ninja.showNinja();
-window.addEventListener('keydown',(e) =>{
+window.addEventListener('keydown', (e) => {
     if (e.keyCode === 40) {
         ninja.moveDown();
-    }if (e.keyCode === 38){
+    }
+    if (e.keyCode === 38) {
         ninja.moveUp();
-    }if(e.keyCode === 39){
+    }
+    if (e.keyCode === 39) {
         ninja.moveRight();
-    }if (e.keyCode === 37){
+    }
+    if (e.keyCode === 37) {
         ninja.moveLeft();
     }
 })
 
 
-class Zombie{
-    constructor(x,y) {
+class Zombie {
+    constructor(x, y) {
         this.x = x;
         this.y = y;
         this.width = 59;
@@ -79,9 +90,10 @@ class Zombie{
         zombie.src = this.srcImg
     }
 
-    moveZombie(){
+    moveZombie() {
 
     }
 }
-let zombie = new Zombie(0,0)
+
+let zombie = new Zombie(0, 0)
 zombie.showZombie();
