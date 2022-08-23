@@ -1,75 +1,87 @@
 class Ninja{
-    x;
-    y;
-    width;
-    height;
-    speedX;
-    speedY;
-    constructor(x,y,width,height) {
+    constructor(x,y) {
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.width = 59;
+        this.height = 86;
         this.speedX = 10;
         this.speedY = 10;
-
-    }
-    showNinja(){
-        let ninja = document.getElementById('gameCanvas')
-        let ctx = ninja.getContext("2d");
-        ctx.clearRect(0,0, 500, 500)
-        let imgNinja = document.getElementById("ninja");
-        ctx.drawImage(imgNinja,this.x,this.y)
+        this.srcImg = 'down1.png'
     }
 
-    move(){
-        this.x += this.speedX
-        this.y += this.speedY
-        this.showNinja()
+    showNinja() {
+        let ninja = document.getElementById('ninja');
+        ninja.style.position = 'relative';
+        ninja.style.width = this.width + 'px';
+        ninja.style.height = this.height + 'px';
+        ninja.style.top = this.y + 'px';
+        ninja.style.left = this.x + 'px';
+        ninja.src = this.srcImg
+    }
+
+    moveDown() {
+        this.y += this.speedY;
+        this.srcImg = (this.srcImg === 'down2.png') ? 'down1.png' : 'down2.png'
+        this.showNinja();
+    }
+
+    moveUp() {
+        this.y -= this.speedY;
+        this.srcImg = (this.srcImg === 'up2.png') ? 'up1.png' : 'up2.png'
+        this.showNinja();
+    }
+
+    moveLeft() {
+        this.x -= this.speedX;
+        this.srcImg = (this.srcImg === 'left2.png') ? 'left1.png' : 'left2.png'
+        this.showNinja();
+    }
+
+    moveRight() {
+        this.x += this.speedX;
+        this.srcImg = (this.srcImg === 'right2.png') ? 'right1.png' : 'right2.png'
+        this.showNinja();
     }
 }
-
-class Dinosaur{
-    x;
-    y;
-    width;
-    height;
-    speedX;
-    speedY;
-    constructor(x,y,width,height){
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.speedX = 10;
-        this.speedY = 10;
-    }
-
-}
-
-let ninja = new Ninja(0,0,80,60)
-ninja.showNinja()
+let ninja = new Ninja(325,180)
+ninja.showNinja();
 window.addEventListener('keydown',(e) =>{
-    if (e.keyCode == 40) {
-        ninja.speedX = 0;
-        ninja.speedY = 10;
-
-        ninja.move()
-    }
-    if (e.keyCode == 37) {
-        ninja.speedX = -10;
-        ninja.speedY = 0;
-        ninja.move()
-    }
-    if (e.keyCode == 38) {
-        ninja.speedX = 0;
-        ninja.speedY = -10;
-        ninja.move()
-    }
-    if (e.keyCode == 39) {
-        ninja.speedX = 10;
-        ninja.speedY = 0;
-        ninja.move()
+    if (e.keyCode === 40) {
+        ninja.moveDown();
+    }if (e.keyCode === 38){
+        ninja.moveUp();
+    }if(e.keyCode === 39){
+        ninja.moveRight();
+    }if (e.keyCode === 37){
+        ninja.moveLeft();
     }
 })
-requestAnimationFrame(ninja.move)
+
+
+class Zombie{
+    constructor(x,y) {
+        this.x = x;
+        this.y = y;
+        this.width = 59;
+        this.height = 86;
+        this.speedX = 5;
+        this.speedY = 5;
+        this.srcImg = 'zombie_xuong.png'
+    }
+
+    showZombie() {
+        let zombie = document.getElementById('zombie');
+        zombie.style.position = 'relative';
+        zombie.style.width = this.width + 'px';
+        zombie.style.height = this.height + 'px';
+        zombie.style.top = this.y + 'px';
+        zombie.style.left = this.x + 'px';
+        zombie.src = this.srcImg
+    }
+
+    moveZombie(){
+
+    }
+}
+let zombie = new Zombie(0,0)
+zombie.showZombie();

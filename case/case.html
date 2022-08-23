@@ -6,61 +6,85 @@
     <link rel="stylesheet" href="case.css">
 </head>
 <body>
-
-<div class="top">
+<div class="header">
     <h1 style="color: lightgrey">Ninja Warrior</h1>
 </div>
+<div class="content">
+    <div class="content__1">
+        <div class="left_top">
+            <div class="glitch"></div>
+            <div class="music">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div>
+                <audio controls autoplay style="visibility: hidden">
+                    <source src="tungevaag-raaban-nhachottiktok.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+        <div class="info">
+            <table>
+                <tr>
+                    <td>
+                        <h3 style="color: lightgrey">Huong dan:</h3>
+                    </td>
+                    <td colspan="2">
+                        <p style="color: lightgrey">dieu khien ninja tieu diet quai vat</p>
+                    </td>
 
-<div class="left">
-    <div class="glitch"></div>
-    <div class="music">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+                </tr>
+                <tr>
+                    <td>
+                    <h3 style="color: lightgrey">Di chuyen:</h3>
+                    </td>
+                    <td>
+                        <img src="4-phim.png" alt="">
+                    </td>
+                    <td>
+                        <h3 style="color: lightgrey">Nhan K:</h3>
+                    </td>
+                    <td>
+                        <img alt="" width="100" height="100" src="red_fireball_1.png">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <h3 style="color: lightgrey">Quai vat:</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img id="zombie1" width="80" height="100" alt="" src="zombie1.png">
+                    </td>
+                    <td>
+                        <img id="zombie2" width="100" height="100" alt="" src="zombie2.png">
+                    </td>
+                    <td>
+                        <img id="zombie3" width="90" height="100" alt="" src="zombie3.png">
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <div class="right">
+        <div class="score">
+            <h3 style="color: lightgrey">Diem: </h3>
+        </div>
+        <div class="game">
+            <img src="down1.png" id="ninja" alt="" width="59" height="86">
+        </div>
     </div>
 </div>
-<audio src="tungevaag-raaban-nhachottiktok.mp3" autoplay="true"></audio>
-<div class="right">
-    <canvas onkeydown="ninja" id="gameCanvas" width="500px" height="500px" style="border:1px solid #d3d3d3;"></canvas>
-</div>
-<img src="down1.png" id="ninja" alt="" width="59" height="86" style="visibility: hidden">
-
-<!--<img src="dinosaur_xuong.png" id="dinosaurXuong" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="dinosaur_trai_xuong.png" id="dinosaurTraiXuong" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="dinosaur_trai_len.png" id="dinosaurTraiLen" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="dinosaur_trai.png" id="dinosaurTrai" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="dinosaur_phai.png" id="dinosaurPhai" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="dinosaur_phai_duoi.png" id="dinosaurPhaiDuoi" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="dinosaur_phai_len.png" id="dinosaurPhaiLen" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="dinosaur_len.png" id="dinosaurLen" alt="" width="59" height="86" style="visibility: hidden">-->
-
-<!--<img src="octopus_len.png" id="octopusLen" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="octopus_phai.png" id="octopusPhai" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="octopus_phai_len.png" id="octopusPhailen" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="octopus_phai_xuong.png" id="octopusPhaiXuong" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="octopus_trai.png" id="octopusTrai" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="octopus_trai_len.png" id="octopusTraiLen" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="octopus_trai_xuong.png" id="octopusTraiXuong" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="octopus_xuong.png" id="octopusXuong" alt="" width="59" height="86" style="visibility: hidden">-->
-
-<!--<img src="zombie_len.png" id="zombieLen" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="zombie_phai.png" id="zombiePhai" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="zombie_phai_len.png" id="zombiePhaiLen" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="zombie_phai_xuong.png" id="zombiePhaiXuong" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="zombie_trai.png" id="zombieTrai" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="zombie_trai_len.png" id="zombieTraiLen" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="zombie_trai_xuong.png" id="zombieTraiXuong" alt="" width="59" height="86" style="visibility: hidden">-->
-<!--<img src="zombie_xuong.png" id="zombieXuong" alt="" width="59" height="86" style="visibility: hidden">-->
-
-<!--<img src="red_fireball_1.png" id="fireball" alt="" width="59" height="86" style="visibility: hidden">-->
-
 </body>
 </html>
 <script src="case.js"></script>
