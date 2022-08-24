@@ -152,6 +152,7 @@ body {
     width: 700px;
     height: 365px;
     border: 1px;
+    position: relative;
     background: url("Asian-Samurai-Ninja-Adventure-Game-Landscape-Background-Design-001.jpg");
 }
 
