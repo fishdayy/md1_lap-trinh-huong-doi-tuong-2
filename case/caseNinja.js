@@ -28,24 +28,24 @@ class Ninja {
     }
 
     moveUp() {
-        if (this.y > 120){
-        this.y -= this.speedY;
-        this.srcImg = (this.srcImg === 'up2.png') ? 'up1.png' : 'up2.png'
-        this.showNinja();
+        if (this.y > 120) {
+            this.y -= this.speedY;
+            this.srcImg = (this.srcImg === 'up2.png') ? 'up1.png' : 'up2.png'
+            this.showNinja();
         }
     }
 
     moveLeft() {
-        if (this.x > 0 ){
-        this.x -= this.speedX;
-        this.srcImg = (this.srcImg === 'left2.png') ? 'left1.png' : 'left2.png'
-        this.showNinja();
+        if (this.x > 0) {
+            this.x -= this.speedX;
+            this.srcImg = (this.srcImg === 'left2.png') ? 'left1.png' : 'left2.png'
+            this.showNinja();
         }
     }
 
     moveRight() {
         if (this.x < 630)
-        this.x += this.speedX;
+            this.x += this.speedX;
         this.srcImg = (this.srcImg === 'right2.png') ? 'right1.png' : 'right2.png'
         this.showNinja();
     }
@@ -68,22 +68,30 @@ window.addEventListener('keydown', (e) => {
     }
 })
 
-let zombie11 = document.createElement('zombie1.1');
-zombie11.src ='zombie1.1.png';
-document.querySelector('.game').appendChild(zombie11);
+class Enemy{
+    constructor(y, src) {
+        this.x = 0;
+        this.y = y;
+        this.width = 60;
+        this.height = 90;
+        this.speedX = 5;
+        this.srcImg = src
+    }
 
-// let imgZombie1 = "zombie1.png"
-// let imgZombie11 = "zombie1.1.png"
-// let imgZombie2 = "zombie2.png"
-// let imgZombie21 = "zombie2.1.png"
-// let imgZombie3 = "zombie3.png"
-// let imgZombie31 = "zombie3.1.png"
-// let arrObstacle = [imgZombie1,imgZombie11,imgZombie2,imgZombie21,imgZombie3,imgZombie31];
-// let obstacles = [];
-// function addObstacle(){
-//     let obstacle = new Obstacle();
-// }
-
-
-
-
+    showEnemy() {
+        enemy = document.createElement('img')
+        enemy.style.position = 'relative'
+        enemy.style.width = this.width + 'px';
+        enemy.style.height = this.height + 'px';
+        enemy.style.top = this.y + 'px';
+        enemy.style.left = this.x + 'px';
+        enemy.src = this.srcImg
+        document.querySelector('.game').appendChild(enemy)
+    }
+}
+let enemy = new Enemy(180, 'zombie1.1.png')
+enemy.showEnemy();
+let enemy2 = new Enemy(200,'zombie2.1.png')
+enemy2.showEnemy()
+let enemy3 = new Enemy(250,'zombie3.1.png')
+enemy3.showEnemy()

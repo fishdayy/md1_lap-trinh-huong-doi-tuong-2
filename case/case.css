@@ -126,20 +126,11 @@ body {
 
 }
 
-.game{
-    background: url("Asian-Samurai-Ninja-Adventure-Game-Landscape-Background-Design-001.jpg") ;
-    border-width:2px;
-    border-style:solid;
-    border-color:white;
 
-    /*overflow: hidden;*/
-    width: 700px;
-    height: 365px;
-}
 .header {
     background-color: black;
     text-align: center;
-    padding: 15px;
+    padding: 10px;
 }
 .content {
     background-color: black;
@@ -156,3 +147,11 @@ body {
     background-color: black;
     height: 30%;
 }
+
+.game{
+    width: 700px;
+    height: 365px;
+    border: 1px;
+    background: url("Asian-Samurai-Ninja-Adventure-Game-Landscape-Background-Design-001.jpg");
+}
+
