@@ -68,32 +68,22 @@ window.addEventListener('keydown', (e) => {
     }
 })
 
+let zombie11 = document.createElement('zombie1.1');
+zombie11.src ='zombie1.1.png';
+document.querySelector('.game').appendChild(zombie11);
 
-class Zombie {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.width = 59;
-        this.height = 86;
-        this.speedX = 5;
-        this.speedY = 5;
-        this.srcImg = 'zombie_xuong.png'
-    }
+// let imgZombie1 = "zombie1.png"
+// let imgZombie11 = "zombie1.1.png"
+// let imgZombie2 = "zombie2.png"
+// let imgZombie21 = "zombie2.1.png"
+// let imgZombie3 = "zombie3.png"
+// let imgZombie31 = "zombie3.1.png"
+// let arrObstacle = [imgZombie1,imgZombie11,imgZombie2,imgZombie21,imgZombie3,imgZombie31];
+// let obstacles = [];
+// function addObstacle(){
+//     let obstacle = new Obstacle();
+// }
 
-    showZombie() {
-        let zombie = document.getElementById('zombie');
-        zombie.style.position = 'relative';
-        zombie.style.width = this.width + 'px';
-        zombie.style.height = this.height + 'px';
-        zombie.style.top = this.y + 'px';
-        zombie.style.left = this.x + 'px';
-        zombie.src = this.srcImg
-    }
 
-    moveZombie() {
 
-    }
-}
 
-let zombie = new Zombie(0, 0)
-zombie.showZombie();
