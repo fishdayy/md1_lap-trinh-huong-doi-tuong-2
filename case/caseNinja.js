@@ -2,37 +2,45 @@ class Ninja {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.width = 59;
-        this.height = 86;
+        this.xSkill = this.x;
+        this.ySkill = this.y;
+        this.width = 60;
+        this.height = 90;
         this.speedX = 10;
         this.speedY = 10;
         this.srcImg = 'down1.png'
         this.srcSkill = 'red_fireball_1.png'
-        this.speedSkill = 15;
         this.skill = document.createElement('img')
+        this.skill.id = 'demo';
     }
 
     showSkillNinja() {
         this.skill.style.position = 'absolute'
         this.skill.style.height = this.height + 'px';
-        this.skill.style.top = this.y + 'px';
-        this.skill.style.left = this.x + 'px';
+        this.skill.style.top = this.ySkill + 'px';
+        this.skill.style.left = this.xSkill + 'px';
         this.skill.src = this.srcSkill
         document.querySelector('.game').appendChild(this.skill)
     }
 
-
-    moveSkillLeft() {
-        this.x -= this.speedX;
-        this.showSkillNinja()
+    initSkill() {
+        this.xSkill = this.x;
+        this.ySkill = this.y;
     }
 
     moveSkillRight() {
-        this.x += this.speedX;
-        this.showSkillNinja()
+        this.xSkill += this.speedX;
+        this.showSkillNinja();
+        this.check()
+    }
+
+    getXSkill() {
+        return this.xSkill;
     }
 
     showNinja() {
+        let html  = '<img src="" id="ninja" alt="" width="60" height="90" style="position: absolute" >'
+        document.getElementById('game1').innerHTML = html;
         let ninja = document.getElementById('ninja');
         ninja.style.position = 'relative';
         ninja.style.width = this.width + 'px';
@@ -73,22 +81,16 @@ class Ninja {
         this.showNinja();
     }
 
-}
-
-let ninja = new Ninja(325, 180)
-ninja.showNinja();
-ninja.showSkillNinja();
-
-function dichuyenFiveball() {
-    ninja.moveSkillRight();
-    if (ninja.x >= 650) {
-        ninja.x = this.x
+    check() {
+        let d = document.getElementById('demo')
+        if (this.xSkill >= 650) {
+            this.skill.parentNode.removeChild(d);
+        }
     }
 }
 
-dichuyenFiveball()
-
-
+let ninja = new Ninja(325, 180)
+ninja.showNinja()
 window.addEventListener('keydown', (e) => {
     if (e.keyCode === 40) {
         ninja.moveDown();
@@ -97,25 +99,35 @@ window.addEventListener('keydown', (e) => {
         ninja.moveUp();
     }
     if (e.keyCode === 39) {
+        // checkStatus = 1
         ninja.moveRight();
     }
     if (e.keyCode === 37) {
+        // checkStatus = 0
         ninja.moveLeft();
     }
     if (e.keyCode === 75) {
-        dichuyenFiveball()
-
+        ninja.initSkill();
+        let id = setInterval(() => {
+            if (ninja.getXSkill() > 650) {
+                clearTimeout(id);
+            } else {
+                ninja.moveSkillRight();
+            }
+        }, 60)
     }
 })
 
 class Enemy {
     constructor(x, src) {
         this.x = x;
-        this.y = Math.round(Math.random() * 180);
+        this.width = 60;
         this.height = 90;
+        this.y = Math.round(Math.random() * 180);
         this.speedX = 2;
         this.srcImg = src
         this.enemy = document.createElement('img')
+        this.enemy.id = 'zombie'
     }
 
     showEnemy() {
@@ -127,100 +139,91 @@ class Enemy {
         document.querySelector('.game').appendChild(this.enemy)
     }
 
-    moveToRight() {
-        this.x += 1;
-        this.showEnemy()
-
-    }
-
     moveToLeft() {
         this.x -= this.speedX;
         this.showEnemy()
+        this.check()
+    }
+
+    check() {
+        let x = document.getElementById('zombie')
+        if (this.x <= 0) {
+            this.enemy.parentNode.removeChild(x);
+        }
     }
 }
 
-let enemy11 = new Enemy(0, 'zombie1.1.png')
+let enemy1 = new Enemy(650, 'zombie1.png')
+enemy1.showEnemy();
 
-function play() {
-    ninja.moveSkillRight()
-    dichuyen11()
-}
-
-setInterval(play, 10)
-clearInterval(play())
-
-
-// enemy11.showEnemy();
-function dichuyen11() {
-    enemy11.moveToRight();
-    if (enemy11.x >= 650) {
-        enemy11.x = 0
-        enemy11.y = Math.random() * 120 + 160
+function dichuyen1() {
+    enemy1.moveToLeft();
+    if (enemy1.x <= 0) {
+        enemy1.x = 650
+        enemy1.y = Math.random() * 120 + 160
     }
+    isCollision(ninja,enemy1)
 
+
+    requestAnimationFrame(dichuyen1)
 }
 
-// dichuyen11()
-//
-// let enemy21 = new Enemy(0,'zombie2.1.png')
-// enemy21.showEnemy();
-// function dichuyen21(){
-//     enemy21.moveToRight();
-//     if(enemy21.x >= 650){
-//         enemy21.x = 0
-//         enemy21.y=Math.random()*120+160
-//     }
-//     requestAnimationFrame(dichuyen21)
-// }
-// dichuyen21()
-//
-// let enemy31 = new Enemy(0,'zombie3.1.png')
-// enemy31.showEnemy();
-// function dichuyen31(){
-//     enemy31.moveToRight();
-//     if(enemy31.x >= 650){
-//         enemy31.x = 0
-//         enemy31.y=Math.random()*120+160
-//     }
-//     requestAnimationFrame(dichuyen31)
-// }
-// dichuyen31()
-//
-// let enemy1 = new Enemy(650,'zombie1.png')
-// enemy1.showEnemy();
-// function dichuyen1(){
-//     enemy1.moveToLeft();
-//     if(enemy1.x <= 0){
-//         enemy1.x = 650
-//         enemy1.y = Math.random()*120+160
-//     }
-//     requestAnimationFrame(dichuyen1)
-// }
-// dichuyen1()
-//
-// let enemy2 = new Enemy(650,'zombie2.png')
-// enemy2.showEnemy();
-// function dichuyen2(){
-//     enemy2.moveToLeft();
-//     if(enemy2.x <= 0){
-//         enemy2.x = 650
-//         enemy2.y = Math.random()*120+160
-//     }
-//     requestAnimationFrame(dichuyen2)
-// }
-// dichuyen2()
-//
-// let enemy3 = new Enemy(650,'zombie3.png')
-// enemy3.showEnemy();
-// function dichuyen3(){
-//     enemy3.moveToLeft();
-//     if(enemy3.x <= 0){
-//         enemy3.x = 650
-//         enemy3.y = Math.random()*120+160
-//     }
-//     requestAnimationFrame(dichuyen3)
-// }
-// dichuyen3()
+dichuyen1()
+
+
+setInterval(dichuyen1, 30000)
+
+let enemy2 = new Enemy(650, 'zombie2.png')
+enemy2.showEnemy();
+
+function dichuyen2() {
+    enemy2.moveToLeft();
+    if (enemy2.x <= 0) {
+        enemy2.x = 650
+        enemy2.y = Math.random() * 120 + 160
+    }
+    isCollision(ninja,enemy2)
+    requestAnimationFrame(dichuyen2)
+}
+
+dichuyen2()
+setInterval(dichuyen2, 20000)
+
+let enemy3 = new Enemy(650, 'zombie3.png')
+enemy3.showEnemy();
+
+function dichuyen3() {
+    enemy3.moveToLeft();
+    if (enemy3.x <= 0) {
+        enemy3.x = 650
+        enemy3.y = Math.random() * 120 + 160
+    }
+    isCollision(ninja,enemy3)
+    requestAnimationFrame(dichuyen3)
+}
+
+dichuyen3()
+setInterval(dichuyen3, 15000)
+
+function isCollision(ninja, enemy) {
+    if (ninja.x + ninja.width >= enemy.x &&
+        ninja.x <= enemy.x + enemy.width &&
+        ninja.y + enemy.height >= enemy.y &&
+        ninja.y <= enemy.y + enemy.height) {
+        document.getElementById('ninja').remove();
+    }
+}
+
+function isCollision2(skill, enemy) {
+    if (skill.x + skill.width >= enemy.x &&
+        skill.x <= enemy.x + enemy.width &&
+        skill.y + skill.height >= enemy.y &&
+        skill.y <= enemy.y + enemy.height) {
+        let x = document.getElementById('zombie')
+        this.enemy.parentNode.removeChild(x);
+    }
+}
+
 
 
 
