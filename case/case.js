@@ -117,6 +117,7 @@ function dichuyen1() {
         enemy1.x = 650
         enemy1.y = Math.random() * 275
     }
+    document.getElementById("diem").innerHTML = diem
     isCollision(ninja,enemy1)
     requestAnimationFrame(dichuyen1)
 }
@@ -126,9 +127,11 @@ let enemy2 = new Enemy(650, 'zombie2.png')
 function dichuyen2() {
     enemy2.moveToLeft();
     if (enemy2.x <= 0) {
+        diem++
         enemy2.x = 650
         enemy2.y = Math.random() * 275
     }
+    document.getElementById("diem").innerHTML = diem
     isCollision(ninja,enemy2)
     requestAnimationFrame(dichuyen2)
 }
@@ -137,9 +140,11 @@ let enemy3 = new Enemy(650, 'zombie3.png')
 function dichuyen3() {
     enemy3.moveToLeft();
     if (enemy3.x <= 0) {
+        diem++
         enemy3.x = 650
         enemy3.y = Math.random() * 275
     }
+    document.getElementById("diem").innerHTML = diem
     isCollision(ninja,enemy3)
     requestAnimationFrame(dichuyen3)
 }
@@ -161,6 +166,7 @@ function delay(){
     setInterval(dichuyen2, 20000)
     setInterval(dichuyen3, 15000)
 }
+
 setInterval(delay,7000)
 
 
