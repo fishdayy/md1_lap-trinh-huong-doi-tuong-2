@@ -1,9 +1,8 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 5%;
     text-align: center;
-    background-color: black;
+    width: 250px;
+    background: url("9ahmyxU.jpg");
     font-family: "Roboto", sans-serif;
 }
 :root {
@@ -13,11 +12,13 @@ body {
     --gray--color: #aaaaaa;
 }
 .wapper {
-    margin-top: 120px;
+    margin-left: 10px;
     width: 300px;
     background-color: var(--primary--color);
-    padding: 10px 30px 30px;
+    padding: 10px 30px 30px 10px;
     border-radius: 10px;
+    border: 1px solid grey;
+
 }
 .wapper input {
     padding-left: 10px;

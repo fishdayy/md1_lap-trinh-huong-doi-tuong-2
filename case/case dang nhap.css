@@ -1,9 +1,8 @@
 body {
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: black;
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 300px;
+    background: url("9ahmyxU.jpg");
     font-family: "Roboto", sans-serif;
 }
 :root {
@@ -12,6 +11,7 @@ body {
     --secondary--color: #a4ebf3;
     --gray--color: #aaaaaa;
 }
+
 
 .login{
     width: 300px;
@@ -23,15 +23,16 @@ body {
 h2{
     color: #868787;
     font-family: sans-serif;
-    padding: 25px;
+    padding: 5px;
 }
 .login input{
     width: 200px;
     height: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid grey;
     padding-left: 20px;
+
 }
 
 .login button{
